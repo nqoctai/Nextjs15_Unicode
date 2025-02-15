@@ -1,0 +1,55 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "todos": [
+    {
+      "id": "1",
+      "title": "Learn React",
+      "content": "Demo learn react",
+      "completed": false
+    },
+    {
+      "id": "2",
+      "title": "Learn Nextjs",
+      "content": "Demo learn Nextjs",
+      "completed": true
+    },
+    {
+      "id": "3",
+      "title": "Learn Express",
+      "content": "Demo learn Express",
+      "completed": false
+    },
+    {
+      "id": "e4ad",
+      "title": "learn Nestjs",
+      "content": "Demo learn Nestjs",
+      "completed": false
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
