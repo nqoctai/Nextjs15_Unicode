@@ -11,7 +11,10 @@ interface Error {
 
 }
 
-export const create = async (formData: FormData) => {
+export const create = async (prevState: {
+    message: string | undefined;
+    success: boolean;
+}, formData: FormData) => {
     try {
         const title = formData.get('title') as string
         const content = formData.get('content') as string
