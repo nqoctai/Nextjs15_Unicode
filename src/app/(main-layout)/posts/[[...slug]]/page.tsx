@@ -4,5 +4,5 @@ import React from 'react'
 
 export default async function PostDetailPage({ params }: { params: { slug: string } }) {
     const { slug } = await params;
-    return slug ? <PostDetail category={slug[0]} post={slug[1]} /> : <PostList />;
+    return slug ? <PostDetail post={slug[0]} /> : <PostList />;
 }

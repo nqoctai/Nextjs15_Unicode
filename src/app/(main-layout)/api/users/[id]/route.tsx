@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
 
 interface ParamType {
-    params: {
+    params: Promise<{
         id: string
-    }
+    }>
 }
 
 export const GET = async (request: NextRequest, { params }: ParamType) => {
