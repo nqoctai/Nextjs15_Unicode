@@ -54,9 +54,9 @@
       "completed": false
     },
     {
-      "title": "Learn Java",
+      "title": "Learn Java 1",
       "content": "Demo learn java",
-      "completed": false,
+      "completed": true,
       "id": "0iZfe7e"
     },
     {
@@ -64,12 +64,6 @@
       "content": "Demo learn mobile",
       "completed": false,
       "id": "p7lDdN-"
-    },
-    {
-      "title": "Learn PHP",
-      "content": "Demo learn php",
-      "completed": false,
-      "id": "DQLEuMG"
     }
   ],
   "profile": {

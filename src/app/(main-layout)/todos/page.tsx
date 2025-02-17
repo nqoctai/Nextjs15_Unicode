@@ -34,16 +34,25 @@ export default async function TodosPage({ searchParams }: { searchParams: Promis
             <SearchForm />
             {
                 todoList.map((todo: Todo) =>
-                    <Link key={todo.id} href={`/todos/${todo.id}`}>
-                        <h3>
-                            {todo.title} <button>Edit</button>
-                        </h3>
-                    </Link>
+
+                    <h3 key={todo.id}>
+                        <Link href={`/todos/${todo.id}`}>
+                            {todo.title}
+                        </Link>
+                        <Link className='fs-6 float-end ms-2' href={`/todos/delete/${todo.id}`}>
+                            Delete
+                        </Link>
+                        <Link className='fs-6 float-end' href={`/todos/edit/${todo.id}`}>
+                            Edit
+                        </Link>
+
+                    </h3>
+
 
                 )
             }
             {/* <TodoApp /> */}
             <TodoAdd2 />
-        </div>
+        </div >
     )
 }
