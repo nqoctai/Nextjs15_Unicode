@@ -8,20 +8,16 @@ export const handleRegister = async (prevState: {
 }
     , formData: FormData) => {
     const schema = z.object({
-        name: z.string({
-            required_error: 'Name is required'
-        }).min(3, "Name must be at least 3 characters"),
-        email: z.string({
-            required_error: 'Email is required'
-        }).email("Invalid email"),
-        password: z.string({
-            required_error: 'Password is required'
-        }).min(6),
+        name: z.string().min(3, "Tên phải từ 3 ký tự"),
+        email: z.string().min(1, "Email bắt buộc phải nhập").email("Email không đúng định dạng"),
+        password: z.string().min(6, "Mật khẩu phải từ 6 ký tự"),
+        confirm_password: z.string().min(1, "Vui lòng xác nhận mật khẩu").refine(data => data === formData.get('password'), { message: "Mật khẩu không khớp" })
     });
     const validatedFields = schema.safeParse({
         name: formData.get('name'),
         email: formData.get('email'),
         password: formData.get('password'),
+        confirm_password: formData.get('confirm_password')
     })
     if (!validatedFields.success) {
         const errors = validatedFields.error.flatten().fieldErrors;
@@ -32,10 +28,27 @@ export const handleRegister = async (prevState: {
 
         };
     }
-    return {
-        success: true,
-        message: "Registered successfully"
+    const response = await fetch(`https://api.escuelajs.co/api/v1/users`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            name: formData.get('name'),
+            email: formData.get('email'),
+            password: formData.get('password'),
+            avatar: "https://picsum.photos/800"
+        })
+    })
+    if (response.ok) {
+        return {
+            success: true,
+            message: "Registered successfully"
+        }
     }
-
+    return {
+        success: false,
+        message: "Registered unsuccessfully"
+    }
 
 }

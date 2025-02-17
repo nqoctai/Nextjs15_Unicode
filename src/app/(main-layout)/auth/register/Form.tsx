@@ -9,7 +9,8 @@ const initialState = {
     errors: {}
 }
 export default function Form() {
-    const [state, formAction] = useActionState(handleRegister, initialState)
+    const [state, formAction, pending] = useActionState(handleRegister, initialState)
+    console.log(state)
 
     return (
         <div>
@@ -40,8 +41,16 @@ export default function Form() {
                     {state.errors?.password && <span className='text-danger'>{state.errors?.password[0]}</span>}
 
                 </div>
+                <div className='mb-3'>
+                    <label htmlFor="confirm_password" className='form-label'>
+                        Confirm Password
+                    </label>
+                    <input id='confirm_password' type="text" className='form-control' name='confirm_password' placeholder='Confirm Password...' />
+                    {state.errors?.confirm_password && <span className='text-danger'>{state.errors?.confirm_password[0]}</span>}
+
+                </div>
                 <div className="d-grid">
-                    <button type='submit' className='btn btn-primary'>
+                    <button type='submit' className='btn btn-primary' disabled={pending}>
                         Register
                     </button>
                 </div>
